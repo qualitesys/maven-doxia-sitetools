@@ -57,6 +57,16 @@ under the License.
       <groupId>org.apache.maven.doxia</groupId>
       <artifactId>doxia-module-fo</artifactId>
       <version>${doxiaVersion}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.media</groupId>
+          <artifactId>jai-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.sun.media</groupId>
+          <artifactId>jai-codec</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- The modules are not in doxia core anymore so you have to state a dependency so that
          the component descriptor gets picked up. -->
@@ -99,24 +109,19 @@ under the License.
       <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-velocity</artifactId>
-      <version>1.2</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.codehaus.plexus</groupId>
-          <artifactId>plexus-component-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
 
     <!-- misc -->
     <dependency>
       <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity</artifactId>
+      <artifactId>velocity-engine-core</artifactId>
+      <version>2.2</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.30</version>
+      <scope>test</scope>
+    </dependency>
     <!-- misc -->
     <dependency>
       <groupId>xalan</groupId>
@@ -144,25 +149,6 @@ under the License.
             </property>
           </systemProperties>
         </configuration>
-      </plugin>
-      <plugin><!-- TODO remove when minimum Java set to 7 -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>enforce-bytecode-version</id>
-            <configuration>
-              <rules>
-                <enforceBytecodeVersion>
-                  <excludes>
-                    <exclude>org.apache.maven.doxia:doxia-module-markdown</exclude>
-                    <exclude>org.nibor.autolink:autolink</exclude>
-                  </excludes>
-                </enforceBytecodeVersion>
-              </rules>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

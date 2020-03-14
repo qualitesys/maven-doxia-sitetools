@@ -36,6 +36,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.maven.doxia.Doxia;
+import org.apache.maven.doxia.docrenderer.velocity.VelocityComponent;
 import org.apache.maven.doxia.document.DocumentModel;
 import org.apache.maven.doxia.document.io.xpp3.DocumentXpp3Reader;
 import org.apache.maven.doxia.sink.Sink;
@@ -59,8 +60,6 @@ import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.ReaderFactory;
 import org.codehaus.plexus.util.xml.XmlStreamReader;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
-import org.codehaus.plexus.velocity.SiteResourceLoader;
-import org.codehaus.plexus.velocity.VelocityComponent;
 
 /**
  * Abstract <code>document</code> renderer.
@@ -512,7 +511,7 @@ public abstract class AbstractDocumentRenderer
                     {
                         reader = getVelocityReader( f, ( (XmlStreamReader) reader ).getEncoding(), context );
                     }
-                    if ( context != null && Boolean.TRUE.equals( (Boolean) context.get( "validate" ) ) )
+                    if ( context != null && Boolean.TRUE.equals( context.get( "validate" ) ) )
                     {
                         reader = validate( reader, fullDocPath );
                     }
@@ -669,7 +668,7 @@ public abstract class AbstractDocumentRenderer
             getLogger().debug( "Velocity render for " + f.getAbsolutePath() );
         }
 
-        SiteResourceLoader.setResource( f.getAbsolutePath() );
+//        SiteResourceLoader.setResource( f.getAbsolutePath() );
 
         Context velocityContext = new VelocityContext();
 
@@ -677,7 +676,7 @@ public abstract class AbstractDocumentRenderer
         {
             for ( int i = 0; i < context.getKeys().length; i++ )
             {
-                String key = (String) context.getKeys()[i];
+                String key = context.getKeys()[i];
 
                 velocityContext.put( key, context.get( key ) );
             }

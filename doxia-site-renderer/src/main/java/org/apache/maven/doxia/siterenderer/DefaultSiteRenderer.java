@@ -54,7 +54,6 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.SystemUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.versioning.ArtifactVersion;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
@@ -74,6 +73,7 @@ import org.apache.maven.doxia.parser.module.ParserModule;
 import org.apache.maven.doxia.parser.module.ParserModuleManager;
 import org.apache.maven.doxia.parser.module.ParserModuleNotFoundException;
 import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
+import org.apache.maven.doxia.siterenderer.velocity.VelocityComponent;
 import org.apache.maven.doxia.util.XmlValidator;
 import org.apache.velocity.Template;
 import org.apache.velocity.context.Context;
@@ -116,7 +116,6 @@ import org.codehaus.plexus.util.ReaderFactory;
 import org.codehaus.plexus.util.StringUtils;
 import org.codehaus.plexus.util.WriterFactory;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
-import org.codehaus.plexus.velocity.VelocityComponent;
 
 /**
  * <p>DefaultSiteRenderer class.</p>
@@ -530,7 +529,7 @@ public class DefaultSiteRenderer
     /**
      * Create a Velocity Context for a Doxia document, containing every information about rendered document.
      *
-     * @param sink the site renderer sink for the document
+     * @param renderingContext the site renderer sink for the document
      * @param siteRenderingContext the site rendering context
      * @return
      */
@@ -749,7 +748,7 @@ public class DefaultSiteRenderer
             {
                 StringWriter sw = new StringWriter();
                 template.merge( context, sw );
-                writer.write( sw.toString().replaceAll( "\r?\n", SystemUtils.LINE_SEPARATOR ) );
+                writer.write( sw.toString().replaceAll( "\r?\n", System.lineSeparator() ) );
             }
             catch ( VelocityException ve )
             {

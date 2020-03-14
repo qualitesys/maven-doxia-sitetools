@@ -114,49 +114,25 @@ under the License.
     </dependency>
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-velocity</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.plexus</groupId>
       <artifactId>plexus-utils</artifactId>
     </dependency>
 
     <!-- misc -->
     <dependency>
       <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity</artifactId>
+      <artifactId>velocity-engine-core</artifactId>
+      <version>2.2</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity-tools</artifactId>
-      <version>2.0</version>
-      <exclusions>
-        <!-- exclude VelocityView and VelocityStruts specific dependencies -->
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.struts</groupId>
-          <artifactId>struts-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.struts</groupId>
-          <artifactId>struts-taglib</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.struts</groupId>
-          <artifactId>struts-tiles</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>sslext</groupId>
-          <artifactId>sslext</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>commons-validator</groupId>
-          <artifactId>commons-validator</artifactId>
-        </exclusion>
-      </exclusions>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.30</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity.tools</groupId>
+      <artifactId>velocity-tools-generic</artifactId>
+      <version>3.0</version>
     </dependency>
     <dependency>
       <groupId>commons-collections</groupId>

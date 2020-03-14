@@ -117,9 +117,9 @@ public class DocumentRendererContext
      *
      *  @return Object[] of keys in the Context.
      */
-    public Object[] getKeys()
+    public String[] getKeys()
     {
-        return context.keySet().toArray();
+        return context.keySet().toArray( new String[0] );
     }
 
     /**

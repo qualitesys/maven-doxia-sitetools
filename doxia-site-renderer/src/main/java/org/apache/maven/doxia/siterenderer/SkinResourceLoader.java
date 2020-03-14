@@ -23,11 +23,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 
 import org.apache.velocity.runtime.resource.Resource;
 import org.apache.velocity.runtime.resource.loader.ResourceLoader;
 import org.apache.velocity.exception.ResourceNotFoundException;
-import org.apache.commons.collections.ExtendedProperties;
+import org.apache.velocity.util.ExtProperties;
 import org.codehaus.plexus.util.IOUtil;
 
 /**
@@ -41,8 +42,16 @@ import org.codehaus.plexus.util.IOUtil;
 public class SkinResourceLoader
     extends ResourceLoader
 {
-    public void init( ExtendedProperties configuration )
+    @Override
+    public void init( ExtProperties extProperties )
     {
+
+    }
+
+    @Override
+    public Reader getResourceReader( String s, String s1 ) throws ResourceNotFoundException
+    {
+        return null;
     }
 
     public synchronized InputStream getResourceStream( String name )
