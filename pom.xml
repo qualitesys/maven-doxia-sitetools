@@ -31,7 +31,7 @@ under the License.
 
   <groupId>org.apache.maven.doxia</groupId>
   <artifactId>doxia-sitetools</artifactId>
-  <version>1.9.3-SNAPSHOT</version>
+  <version>1.11-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Doxia Sitetools</name>
@@ -69,9 +69,9 @@ under the License.
   </distributionManagement>
 
   <properties>
-    <doxiaVersion>1.9.1</doxiaVersion>
+    <doxiaVersion>1.10</doxiaVersion>
     <maven.site.path>doxia-sitetools-archives/doxia-sitetools-LATEST</maven.site.path>
-    <project.build.outputTimestamp>2020-02-19T07:03:09Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2021-06-26T11:33:32Z</project.build.outputTimestamp>
   </properties>
 
   <dependencyManagement>
@@ -173,7 +173,7 @@ under the License.
       <dependency>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-utils</artifactId>
-        <version>3.0.22</version>
+        <version>3.3.0</version>
       </dependency>
       <!-- misc -->
       <dependency>
@@ -185,7 +185,7 @@ under the License.
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.13.1</version>
+        <version>4.13.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -209,7 +209,7 @@ under the License.
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>clirr-maven-plugin</artifactId>
           <configuration>
-            <comparisonVersion>1.1</comparisonVersion>
+            <comparisonVersion>1.9</comparisonVersion>
           </configuration>
         </plugin>
         <plugin>
@@ -248,7 +248,7 @@ under the License.
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.1.2</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -275,16 +275,6 @@ under the License.
             </goals>
             <configuration>
               <excludes>
-                <exclude>org/apache/maven/doxia/site/decoration/*</exclude>
-                <exclude>org/apache/maven/doxia/site/decoration/inheritance/*URLContainer</exclude>
-                <!-- DOXIASITETOOLS-85 RenderingContext package changed -->
-                <exclude>org/apache/maven/doxia/siterenderer/*Renderer</exclude>
-                <exclude>org/apache/maven/doxia/siterenderer/sink/*</exclude>
-                <!-- DOXIA-511 -->
-                <exclude>org/apache/maven/doxia/docrenderer/AbstractDocumentRenderer</exclude>
-                <exclude>org/apache/maven/doxia/docrenderer/itext/AbstractITextRender</exclude>
-                <!-- DOXIASITETOOLS-170 -->
-                <exlcude>org/apache/maven/doxia/siterenderer/SiteRenderingContext</exlcude>
               </excludes>
             </configuration>
           </execution>
@@ -379,15 +369,6 @@ under the License.
           </plugin>
         </plugins>
       </reporting>
-    </profile>
-    <profile>
-      <id>jigsaw</id>
-      <activation>
-        <jdk>[1.9,)</jdk>
-      </activation>
-      <properties>
-        <clirr.skip>true</clirr.skip>
-      </properties>
     </profile>
   </profiles>
 </project>
